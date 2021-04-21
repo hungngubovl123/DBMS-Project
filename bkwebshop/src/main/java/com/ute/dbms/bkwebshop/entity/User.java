@@ -5,15 +5,13 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.validation.constraints.NotBlank;
-
 @Entity
 @Table(name = "USERS")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "ID", nullable = false)
     private long id;
 
@@ -31,11 +29,22 @@ public class User implements Serializable {
     )
     private Set<Role> roles;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private UserInfo userInfo;
+
+
     public User() {
     }
     public User(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+    
+    public User(String email, String password, UserInfo userInfo) {
+        this.email = email;
+        this.password = password;
+        this.userInfo = userInfo;
     }
     public long getId() {
         return id;
@@ -71,29 +80,35 @@ public class User implements Serializable {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    // @Override
-    // public int hashCode() {
-    //     return Objects.hash(id, email, password, loggedIn);
-    // }
-    // @Override
-    // public boolean equals(Object obj) {
-    //     if (this == obj)
-    //         return true;
-    //     if (obj == null)
-    //         return false;
-    //     if (getClass() != obj.getClass())
-    //         return false;
-    //     User other = (User) obj;
-    //     return Objects.equals(email, other.email) &&
-    //          Objects.equals(password, other.password);
-    // }
-    // @Override
-    // public String toString(){
-    //     return "User{" +
-    //             "id=" + id +
-    //             ", email='" + email +'\'' +
-    //             ", password='" + password + '\'' +
-    //             ", loggedIn=" + loggedIn +
-    //             '}';
-    // }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email, password);
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        User other = (User) obj;
+        return Objects.equals(email, other.email);
+    }
+    @Override
+    public String toString(){
+        return "User{" +
+                "id=" + id +
+                ", email='" + email +'\'' +
+                ", role='" + getRoles() + '\'' +
+                ", " + userInfo.toString() +
+                '}';
+    }
 }

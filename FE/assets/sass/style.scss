@@ -102,6 +102,9 @@ Version : 1.0.0
                         height: 40px;
                         font-size: 14px;
                         border: none;
+                        &:hover {
+                            background-color: #f46164;
+                        }
                     }
                 }
             }
@@ -124,8 +127,9 @@ Version : 1.0.0
                     a {
                         padding: 20px;
                         color: white;
+                        font-weight: 500;
                         &:hover {
-                            background: #000;
+                            background: #f46164;
                             transition: 0.3s all;
                         }
                     }
@@ -137,7 +141,7 @@ Version : 1.0.0
 
 /* ============ 4,Slide Product ===========*/
 .slider {
-    max-height: 600px;
+    height: 600px;
 }
 
 /* ============ 5,Catalog ===========*/
@@ -149,6 +153,143 @@ Version : 1.0.0
             flex-wrap: wrap;
             .catalog__content-item {
                 width: 33.333%;
+                text-align: center;
+                margin-bottom: 20px;
+                .item__img {
+                    a {
+                        img {
+                            max-height: 350px;
+                            width: 275px;
+                        }
+                    }
+                }
+                .item__info {
+                    margin-top: 10px;
+                    .item__info-name {
+                        font-weight: 500;
+                        color: #000;
+                        &:hover {
+                            color: #f46164;
+                        }
+                    }
+                    span {
+                        display: block;
+                        padding: 5px 0 15px 0;
+                        color: #f46164;
+                    }
+                    .btn-add {
+                        padding: 10px 20px;
+                        border: 1px solid red;
+                        border-radius: 4px;
+                        color: #f46164;
+                        &:hover {
+                            color: #ffffff;
+                            background-color: #f46164;
+                            transition: 0.3s all;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ============ 6,Policy ===========*/
+.policy {
+    margin: 20px 0 30px 0;
+    .container {
+        .policy__content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .policy__content-item {
+                display: flex;
+                align-items: center;
+                border: 1px #f46164 solid;
+                color: white;
+                font-size: 16px;
+                background-color: #f46164;
+                padding: 20px;
+                i {
+                    font-size: 30px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
+/* ============ 7,Footer ===========*/
+.footer {
+    margin-top: 20px;
+    .container {
+        .footer__content {
+            display: flex;
+            justify-content: space-between;
+            .footer__content-intro {
+                width: 33.3333%;
+                h2 {
+                    margin-bottom: 20px;
+                }
+                ul {
+                    li {
+                        a {
+                            color: #000;
+                            &:hover {
+                                color: #f46164;
+                            }
+                        }
+                        margin-bottom: 20px;
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+
+            .footer__content-help {
+                width: 33.3333%;
+                h2 {
+                    margin-bottom: 20px;
+                }
+                ul {
+                    li {
+                        margin-bottom: 20px;
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+
+            .footer__content-social {
+                h2 {
+                    margin-bottom: 30px;
+                }
+                ul {
+                    display: flex;
+                    align-items: center;
+                    li {
+                        display: block;
+                        margin-right: 10px;
+                        a {
+                            border: 1px solid #f46164;
+                            border-radius: 4px;
+                            padding: 10px;
+                            background-color: #f46164;
+                            &:hover {
+                                background-color: white;
+                                border: white 1px solid;
+                                transition: 0.3s all;
+                                i {
+                                    color: #f46164;
+                                }
+                            }
+                            i {
+                                color: white;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
